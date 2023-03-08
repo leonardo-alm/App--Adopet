@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import HomePage from './pages/home';
+import SearchPage from './pages/search';
+import PetDetailsPage from './pages/detail';
+import PetDetailsNotFound from './pages/notfound';
+import Navigation from './components/navigation';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Footer from './components/footer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Navigation />
+        <Routes>
+          <Route path='/:type/:id' element={<PetDetailsPage />} />
+          <Route path='/search' element={<SearchPage />} />
+          <Route path='/pet-details-not-found' element={<PetDetailsNotFound />} />
+          <Route path='/:type?' element={<HomePage />} />
+        </Routes>
+        <Footer />
+      </Router>
     </div>
   );
 }
 
 export default App;
+  
