@@ -7,7 +7,7 @@ In order to mock an API, I used the [Mock Service Worker(MSW)](https://mswjs.io/
 
 To see the demo in higher quality click on the gif below.
 
-![Adopet Demo](demo/animacao.gif)
+![Adopet Demo](demo/animacao2.gif)
 
 ## Run
 
