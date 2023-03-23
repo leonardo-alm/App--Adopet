@@ -66,9 +66,13 @@ span {
 }
 
 .nav-link-active {
-  color: whitesmoke;
+  color: #29d6b5;
   font-weight: bold;
-  text-decoration: overline;
+}
+
+.nav-link-active:hover {
+  border-radius: 0px;
+  border-color: #060434;
 }
 
 .pet-type-label {
@@ -339,13 +343,39 @@ ul {
 
 @media(max-width: 767px) {
   .footer-col {
-    width: 50%;
+    width: 20%;
     margin-bottom: 30px;
   }
 }
 
 @media(max-width: 574px) {
   .footer-col {
-    width: 100%;
+    width: 25%;
+  }
+}
+
+@media(max-width: 503px) {
+  .nav-links {
+    flex-direction: column;
+    height: 200px;
+
+  }
+
+  .nav-link {
+    justify-content: center;
+  }
+
+  .nav-link-active {
+    border-radius: 0px;
+    border: none;
+    background-color: whitesmoke;
+    color: #060434;
+  }
+
+  .nav-logo {
+    flex-direction: column;
+    align-items: center;
+    height: 150px;
+
   }
 }

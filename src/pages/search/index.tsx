@@ -6,7 +6,6 @@ import { useLocation } from 'react-router-dom';
 import { IPetDetail } from '../../interfaces/IPetDetail';
 
 const SearchPage = () => {
-
   const { search } = useLocation()
 
   const queryParams = useMemo(() => {
@@ -23,7 +22,7 @@ const SearchPage = () => {
         setPets(petsData);
       }
     }
-    
+
     getPetsData();
   }, [queryParams]);
 

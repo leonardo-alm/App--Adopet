@@ -14,7 +14,7 @@ const Pet = (props: IPetProps) => {
             <img
               className="pet-image"
               src={
-                animal.photos[0]?.medium || 'https://i.imgur.com/aEcJUFK.png'
+                animal.photos[0]?.medium || '/missing-animal.png'
               }
               alt=""
             />

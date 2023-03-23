@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getPetDetails } from '../../requests';
-import Cover from '../../components/cover';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { IAnimal } from '../../interfaces/IAnimal';
 
 const PetDetailsPage = () => {
@@ -9,6 +8,7 @@ const PetDetailsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const { id } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function getPetsData() {
@@ -35,6 +35,11 @@ const PetDetailsPage = () => {
     getPetsData();
   }, [id]);
 
+  const goBack = () => {
+    console.log('goback')
+    navigate(-1)
+  }
+
   return (
     <div className='page'>
       {loading ? (
@@ -50,7 +55,7 @@ const PetDetailsPage = () => {
               <img
                 className="pet-image"
                 src={
-                  data.photos[1]?.medium || 'https://i.imgur.com/aEcJUFK.png'
+                  data.photos[1]?.medium || data.photos[0]?.medium || '/missing-animal.png'
                 }
                 alt=""
               />
@@ -64,7 +69,13 @@ const PetDetailsPage = () => {
               <p>{data.description}</p>
             </div>
           </div>
+          <div className="actions-container">
+            <button className="button" onClick={goBack}>
+              Go Back
+            </button>
+          </div>
         </main>
+
       )}
     </div>
   );

@@ -13,12 +13,12 @@ export const handlers = [
     const query = req.url.searchParams.get('query');
     let response = animals.animals;
 
-    if (type !== '' && type !== null) {
+    if (type) {
       response = response.filter(
         (animal) => animal.type.toLowerCase() === type.toLowerCase()
       );
     }
-    if (query !== '' && query !== null) {
+    if (query) {
       response = response.filter(
         (animal) =>
           animal.contact.address.state

@@ -19,7 +19,7 @@ const Navigation = () => {
     <nav>
       <div className="nav-logo">
         <div className='logo'>
-          <img src={'https://cdn-icons-png.flaticon.com/512/7608/7608786.png'} style={{ height: 70 }} alt="Petlover" />
+          <img src='/adopet.png' style={{ height: 70 }} alt="Petlover" />
           <span>Adopet</span>
         </div>
         <Search />

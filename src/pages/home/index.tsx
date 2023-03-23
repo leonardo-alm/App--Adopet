@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { getPets } from '../../requests';
 import Cover from '../../components/cover';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { IAnimal } from '../../interfaces/IAnimal';
 
 const HomePage = () => {
   const [data, setData] = useState<IAnimal[]>([]);
   const { type } = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function getPetsData() {
@@ -19,6 +20,11 @@ const HomePage = () => {
     }
     getPetsData();
   }, [type]);
+
+  const goBack = () => {
+    console.log('goback')
+    navigate(-1)
+  }
 
   if (!data) {
     return <h2>Loading...</h2>;
@@ -40,7 +46,7 @@ const HomePage = () => {
               to={`/${animal.type.toLowerCase()}/${animal.id}`}
               className="pet"
             >
-              <article className='pet-box'>
+              <article>
                 <div className="pet-image-container">
                   {
                     <img
@@ -62,7 +68,16 @@ const HomePage = () => {
           ))}
         </div>
       ) : (
-        <p className="prompt">No {type}s available for adoption now.</p>
+        <>
+          <p className="prompt">No {type}s available for adoption now.</p>
+          <div className="actions-container">
+            <button className="button" onClick={goBack}>
+              Go Back
+            </button>
+          </div>
+        </>
+
+
       )}
     </div>
   );
